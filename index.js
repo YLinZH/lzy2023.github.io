@@ -263,6 +263,7 @@
     const audio = document.getElementById('audio');
     let isPlaying = false;
     let titleEnd = false;
+    let fullScreen = false;
     const text = document.querySelector('.text');
     const title = " 嘿嘿！欢迎来到这个神奇的生日世界, 探索一下这片星空吧。";
     const text1 = "别紧张，接下来让我们看会动漫放松一下！！"
@@ -279,6 +280,10 @@
     const cardContainer = document.querySelector('.CardContainer');
     const card = document.querySelector('.card');
 
+    audio.addEventListener('ended',(event) => {
+        audio.currentTime = 0;
+        audio.play();
+    })
     const animateText = (str) => {
         let words = str.split("");
     
@@ -377,6 +382,19 @@
             audio.play();
             isPlaying = true;
         }
+        if(!fullScreen){
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+              } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+              } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+              } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            }
+            fullScreen = true;
+        }
+
 
     }
 
