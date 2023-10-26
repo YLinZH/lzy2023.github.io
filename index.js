@@ -260,7 +260,8 @@
     }
 
     initShell();
-
+    const audio = document.getElementById('audio');
+    let isPlaying = false;
     let titleEnd = false;
     const text = document.querySelector('.text');
     const title = " 嘿嘿！欢迎来到这个神奇的生日世界, 探索一下这片星空吧。";
@@ -372,6 +373,11 @@
             canvas.style.cursor = 'default';
             divShell.style.transform = 'scale(1)';
         }
+        if(!isPlaying){
+            audio.play();
+            isPlaying = true;
+        }
+
     }
 
     btnContainer.onclick = function() {
